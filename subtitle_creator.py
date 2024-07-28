@@ -2,21 +2,23 @@
 
 import assemblyai as aai
 from deep_translator import (GoogleTranslator,
-                             ChatGptTranslator,
-                             MicrosoftTranslator,
-                             PonsTranslator,
-                             LingueeTranslator,
-                             MyMemoryTranslator,
-                             YandexTranslator,
-                             PapagoTranslator,
-                             DeeplTranslator,
-                             QcriTranslator,
-                             single_detection,
-                             batch_detection)
+                            #  ChatGptTranslator,
+                            #  MicrosoftTranslator,
+                            #  PonsTranslator,
+                            #  LingueeTranslator,
+                            #  MyMemoryTranslator,
+                            #  YandexTranslator,
+                            #  PapagoTranslator,
+                            #  DeeplTranslator,
+                            #  QcriTranslator,
+                            #  single_detection,
+                            #  batch_detection
+                            )
 
 aai.settings.api_key = "66f9661530504430a3379b59f7a5f969"
 langs = langs_dict = GoogleTranslator().get_supported_languages(as_dict=True)
 checking_language = True
+targed_lang = 'en'
 
 def create_subtitles(path):
 
@@ -31,7 +33,7 @@ def create_subtitles(path):
     # export srt file of transcript
     subtitles = transcript.export_subtitles_srt()
 
-    f = open('subtitles', "w")
+    f = open('subtitles.srt', "w")
     f.write(subtitles)
     f.close
 
@@ -62,6 +64,7 @@ if __name__ == '__main__':
                 break
             else:
                 print("\nThat language is not available, please try again.")
+
     #manually input path to video needing subtitles
     video_file = input("\nFile path of video to translate: ")
     create_subtitles(video_file)
