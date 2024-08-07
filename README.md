@@ -2,7 +2,7 @@
 # tool designed to create english subtitles on 'any' language video
 
 # python -m venv venv
-# /venv/Scripts/Activate.ps1 (for windows)
+# .\venv\Scripts\Activate.ps1 (for windows)
 # pip install argostranslator
 # pip install assemblyai
 
