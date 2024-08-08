@@ -2,7 +2,6 @@ import whisper
 import ffmpeg
 from datetime import timedelta
 from moviepy.editor import VideoFileClip
-from pathlib import Path
 import os
 
 # list of available languages
@@ -104,6 +103,7 @@ def create_subtitles(model_type):
         text = seg["text"]
         segment_id = seg["id"] + 1
         segment = f"{segment_id}\n{start} --> {end}\n{text[1:] if text[0] == ' ' else text}\n\n"
+        
         with open(output_srt, "a", encoding="utf-8") as f:
             f.write(segment)
 
@@ -113,13 +113,12 @@ def combine_srt_with_video(input_video_path):
     audio = video.audio
     ffmpeg.concat(video.filter("subtitles", output_srt), audio, v=1, a=1).output('./outputs/subbed_up.mp4').run()
 
-
 if __name__ == '__main__':
 
     # first segment
     # user input of mp4 file name in inputs folder
     # checks if file exists to proceed
-    print("Type 'L' for a list of available languages")
+    print("\nType 'L' for a list of available languages")
     checking = True
     while checking == True:
 
