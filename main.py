@@ -1,11 +1,10 @@
-
 import whisper
 import ffmpeg
 from datetime import timedelta
 from moviepy.editor import VideoFileClip
 from pathlib import Path
 import os
-import subprocess
+
 # list of available languages
 whisper_supported_languages = [
     "English",
@@ -161,6 +160,5 @@ if __name__ == '__main__':
 
     extract_audio(video_file_path)
     create_subtitles(model_size)
-    # video_file_path = './inputs/ch.mp4'
-    # combine_srt_with_video(video_file_path)
+    combine_srt_with_video(video_file_path)
     
