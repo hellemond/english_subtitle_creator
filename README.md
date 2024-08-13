@@ -22,6 +22,7 @@
 3. install ffmpeg
  - easy to follow guide on how to do that:
     - https://phoenixnap.com/kb/ffmpeg-windows
+    - **Restart terminal after ffmpeg installation**
 
 
 4. download required model files for whisperai
@@ -29,7 +30,7 @@
 
 
 5. edit 'openai_public.py' file located at .\venv\Lib\site-packages\tiktoken_ext\openai_public.py
-    - This step is also mentioned in step 3 on the linked webpage
+    - **step 3 from the linked webpage for instructions on what to edit**
 
 
 6. add missing dependency (libomp140.x86_64.dll) to .\venv\Lib\site-packages\torch\lib
