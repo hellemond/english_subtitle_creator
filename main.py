@@ -77,11 +77,12 @@ whisper_model_sizes = [
     "large"    # largest model, highest accuracy but slowest
 ]
 
-output_audio = './outputs/temp.mp3'
-output_srt = './outputs/temp.srt'
+output_audio = './outputs/video_audio.mp3'
+output_srt = './outputs/video_subtitles.srt'
+output_video = './outputs/output_video.mp4'
 
 def extract_audio(path):
-    # extracts audio from video to temp.mp3
+    # extracts audio from video to audio.mp3
     video = VideoFileClip(path)
     video.audio.write_audiofile(output_audio, codec="mp3")
     
@@ -111,7 +112,7 @@ def combine_srt_with_video(input_video_path):
     # outputs new video of combined srt and input video
     video = ffmpeg.input(input_video_path)
     audio = video.audio
-    ffmpeg.concat(video.filter("subtitles", output_srt), audio, v=1, a=1).output('./outputs/subbed_up.mp4').run()
+    ffmpeg.concat(video.filter("subtitles", output_srt), audio, v=1, a=1).output(output_video).run()
 
 if __name__ == '__main__':
 
@@ -149,7 +150,7 @@ if __name__ == '__main__':
         model_size = input("\nEnter Model type: ")
 
         if model_size.upper() == "M":
-            print('\nModel Types:')
+            print('\n\nModel Types:\n')
             for i in whisper_model_sizes:
                 print (i)
         elif model_size in whisper_model_sizes:
