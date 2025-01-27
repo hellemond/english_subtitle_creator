@@ -77,23 +77,11 @@ file_path_label = ctk.CTkLabel(app, text='', fg_color="transparent", )
 file_path_label.pack(padx = 25)
 file_path_label.anchor("center")
 
-
-# select model size button
-def combobox_callback(choice):
-    print("model size chosen:", choice)
-    global model_size
-    model_size = choice
-
-model_dropdown = ctk.CTkComboBox(app, values=["tiny", "base", "small", "medium", "large"],
-                                     command=combobox_callback)
-model_dropdown.pack(padx=20, pady=10)
-model_dropdown.set("Select Model")
-
 # run program button
 def button_event():
 
     extract_audio(input_path)
-    create_subtitles(model_size)
+    create_subtitles("large")
     combine_srt_with_video(input_path)
     os.remove(output_audio)
     os.remove(output_srt)
@@ -103,10 +91,6 @@ run_app_button = ctk.CTkButton(app, text="Create Subtitled Video", command=(butt
 run_app_button.pack(padx=20, pady=25)
 run_app_button.anchor("s")
 
-
-# progress bar
-# progressbar = ctk.CTkProgressBar(app, progress_color='cyan', mode='indeterminate')
-# progressbar.pack(padx = 1, pady = 10)
 
 # run the app
 app.mainloop()
