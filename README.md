@@ -16,7 +16,7 @@
     pip install blobfile
     pip install moviepy
     pip install ffmpeg-python
-    pip install --force-reinstall numpy==1.26.4
+    pip insall customtkinter
 
 
 3. install ffmpeg
